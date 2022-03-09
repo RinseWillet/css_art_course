@@ -1,0 +1,268 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    /* colors */
+    --spongebob-yellow:#E8E911;   
+    --spongebob-eye-white: white;
+    --spongebob-cheek-color: #FF3D3D;
+    --spongebob-border: 0.7rem solid black;
+
+    /* distances */
+    --spongebob-eye-distance: 6%;
+    --spongebob-innereye-distance: 50%;    
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    min-height: 100vh;
+    background: var(--spongebob-yellow);
+}
+
+.spongebob{
+    transform: scale(0.4);    
+}
+
+.spongebob__face {
+    background: var(--spongebob-yellow);
+    height: 60rem;
+    width: 50rem;
+    position: relative;
+}
+
+.spongebob__eye{
+    width: 22rem;
+    height: 22rem;
+    background: var(--spongebob-eye-white);
+    border-radius: 50%;
+    border: var(--spongebob-border);
+    position: absolute;
+    top: 20%;   
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* spongebob his eyelid */
+.spongebob__eye::before{
+    content:"";
+    width: 100%;
+    height: 100%;
+    background: var(--spongebob-yellow);
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    border-bottom: var(--spongebob-border);
+    transform: scaleY(0);
+    /* animation to blink */
+    animation-name: blink;
+    animation-duration: 3s;
+    animation-iteration-count:infinite;
+    
+}
+
+.spongebob__eye--left{
+    left: var(--spongebob-eye-distance);
+}
+
+.spongebob__eye--right{
+    right: var(--spongebob-eye-distance);
+}
+
+.spongebob__innerEye{
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    top: 40%;    
+    box-shadow: 0 0 0 2rem #3FCEFA, 0 0 0 2.7rem black ;
+}
+
+.spongebob__innerEye--left {
+    left: 50%;
+}
+
+.spongebob__innerEye--right {
+    right: 50%; 
+}
+
+.spongebob__eyelash {
+    width: 1.5rem;
+    height: 8rem;
+    background: black;
+    position: absolute;    
+    z-index: 0;
+}
+
+.spongebob__eyelash--left--first{
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.4rem;
+    left: 14%;
+    top: 16%;
+    transform: rotate(-25deg);
+}
+
+.spongebob__eyelash--right--first{
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.4rem;
+    left: 58%;
+    top: 16%;
+    transform: rotate(-25deg);
+}
+
+.spongebob__eyelash--left--second{
+    top: 13%;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+    left: calc(11rem + 1.5rem);
+}
+
+.spongebob__eyelash--right--second{
+    top: 13%;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+    left: calc(11rem + 1.5rem + 45%);
+}
+
+.spongebob__eyelash--left--third {
+    top: 16%;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.4rem;
+    left: 38%;
+    transform: rotate(25deg);
+}
+
+.spongebob__eyelash--right--third {
+    top: 16%;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.4rem;
+    left: calc(100% - 38% / 2);
+    transform: rotate(25deg);
+}
+
+.spongebob__nose{
+    width: 8rem;
+    height: 11rem;
+    position: absolute;
+    border: var(--spongebob-border);
+    border-bottom: 0.7rem solid transparent;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) skewY(15deg) rotate(20deg);
+}
+
+.spongebob__mouth{
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    width: 70rem;
+    height: 40rem;
+    border-radius: 50%;    
+    border: 0.7rem solid transparent;
+    border-bottom: var(--spongebob-border);
+    z-index: 1;
+}
+
+.spongebob__tooth{
+    position: absolute;
+    width: 8rem;
+    height: 7rem;
+    border: var(--spongebob-border);
+    border-top: none;
+    background: white;
+    top: 76%;    
+    z-index: 0;
+}
+
+.spongebob__tooth--left{
+    left: 30%;
+    transform: rotate(5deg);
+}
+
+.spongebob__tooth--right{
+    right: 30%;
+    transform: rotate(-5deg);
+}
+
+.spongebob__cheek{
+    position:absolute;
+    height: 5rem;
+    width: 7rem;
+    border-radius: 50%;
+    top: 55%;    
+    border: 0.4rem solid var(--spongebob-cheek-color);
+    border-bottom: 0.4rem solid transparent;
+}
+
+.spongebob__cheek--left{
+    transform: rotate(-20deg);
+    left: -15%;
+}
+
+.spongebob__cheek--right{
+    transform: rotate(20deg);
+    right: -15%;
+}
+
+.spongebob__freckle{
+    position: absolute;
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    background: var(--spongebob-cheek-color);
+    top: 20%;
+    left: 20%;
+}
+
+.spongebob__freckle--first{
+    top: 20%;
+    left: 20%;
+}
+
+.spongebob__freckle--second{
+    top: 20%;
+    left: 65%;
+}
+
+.spongebob__freckle--third{
+    top: 53%;
+    left: 40%;
+}
+
+/* utility classes */
+.u-flex-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* animations */
+@keyframes blink {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    10% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+    20% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+}
+
+/* media queries */
+@media (min-width: 50rem) {
+    .spongebob{
+        transform: scale(1);
+    }
+}

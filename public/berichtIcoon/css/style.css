@@ -1,0 +1,160 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    background-color: #05dfd7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 4rem;
+}
+
+.message{
+    height: 20rem;
+    width: 40rem;
+    background-color: #fa26a0;
+    border-radius: 3rem;
+    box-shadow: 2rem 1rem 1.6rem 0 rgba(0,0,0,0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    /* animation properties */
+    animation-name: popup;
+    animation-duration: 1.4s;
+    animation-fill-mode: backwards;
+
+    /* transition properties */
+    transition: transform 0.8s;
+}
+
+.message:hover{
+    transform:scale(1.1);
+}
+
+.message--green{
+    background-color: #206a5d;
+    border-radius: 0;
+}
+
+.message--blue{
+    background-color: #00416d;
+    width: 20rem;
+    border-radius: 50%;
+}
+
+.message::after{
+    content: "";
+    position: absolute;
+    top: 95%;
+    right: 50%;
+    width: 5rem;
+    height: 5rem;
+    border-bottom-left-radius: 0.5rem;
+    background-color: #fa26a0;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+    transform: translateX(50%)
+}
+
+.message--green::after{
+    background-color:#206a5d;    
+}
+
+.message--blue::after{
+    background-color: #00416d;
+}
+
+.message__line{
+    width: 80%;
+    height: 0.8rem;
+    background-color: #eeeeee;
+    border-radius: 3rem; 
+    
+    /* animation properties */
+    animation-name: reading;
+    animation-duration: 0.6s;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+}
+
+.message__line:nth-of-type(2){
+    animation-delay: 0.6s;
+}
+
+.message__line:nth-of-type(3){
+    animation-delay: 1.2s;
+}
+
+.message__line:nth-of-type(4){
+    animation-delay: 1.8s;
+}
+
+.message__line:nth-of-type(5){
+    animation-delay: 2.4s;    
+}
+
+.message__line--small{
+    width: 50%;
+}
+
+.message__line--square{
+    border-radius: 0; 
+}
+
+@media (max-width: 68.75rem){
+    body{
+        flex-direction: column;
+        gap: 8rem;
+    }
+    .message{
+        transform: scale(0.8);
+        animation-name: popup--mobile;
+    }
+
+    .message:hover{
+        transform:scale(0.8);
+    }
+
+}
+
+
+@keyframes reading {
+    from{
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    to{
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
+@keyframes popup {
+    from{
+        transform: scale(0.7) translateY(5rem);
+    }
+
+    to{
+        transform: scale(1) translateY(0rem);
+    }
+}
+
+@keyframes popup--mobile {
+    from{
+        transform: scale(0.5) translateY(5rem);
+    }
+    to{
+        transform: scale(0.8) translateY(0rem);
+    }
+}

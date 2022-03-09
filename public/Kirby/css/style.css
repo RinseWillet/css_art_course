@@ -1,0 +1,204 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    /* colors */
+    --background-color: #0C72EE;
+    --kirby-color: #FF9EC8;   
+    --kirby-eye-light-blue-first: #009AF9;
+    --kirby-eye-light-blue-second: #0070B5;
+    --kirby-eye-darker-blue: #00427E;
+    --kirby-cheek-color: #E5649C;
+    --kirby-foot-color: #F20079;
+
+    /* distances */
+    --kirby-eye-distance: 32%;
+    --kirby-cheek-distance: 13%;
+    --kirby-foot-distance: 0%;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.kirby{
+position: relative;
+}
+
+.kirby__face{
+height: 30rem;
+width: 30rem;
+background: var(--kirby-color);
+border-radius: 50%;
+border: 0.5rem solid black;
+}
+
+.kirby__eye{
+    height: 8rem;
+    width: 3.5rem;
+    position: absolute;
+    top: 25%;    
+    background: linear-gradient(var(--kirby-eye-light-blue-first), var(--kirby-eye-light-blue-second) 10%);
+    border-radius: 50%;
+    transform: rotate(180deg);
+    border: 0.5rem solid black;
+    overflow: hidden;
+}
+
+.kirby__eye::before, .kirby__eye::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 160%;
+    border-radius: 50%;
+}
+
+.kirby__eye::before{    
+    background: var(--kirby-eye-darker-blue);    
+    top: 15%;
+    left: -30%;
+}
+
+.kirby__eye::after{    
+    background: black;    
+    top: 25%;
+    left: -30%;
+}
+
+.kirby__eye--left{
+    left: var(--kirby-eye-distance);
+}
+
+.kirby__eye--right{
+    right: var(--kirby-eye-distance);
+}
+
+.kirby__pupil{
+    position: absolute;
+    width: 75%;
+    height: 45%;
+    background: white;
+    top: 50%;
+    left: 12%;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.kirby__cheek{
+    position:absolute;
+    width: 5rem;
+    height: 3rem;
+    background: var(--kirby-cheek-color);
+    border-radius: 50%;
+    top: 50%;
+    filter: blur(0.1rem);
+}
+
+.kirby__cheek--left{
+    left: var(--kirby-cheek-distance);
+}
+
+.kirby__cheek--right{
+    right: var(--kirby-cheek-distance);
+}
+
+.kirby__arm{
+    position: absolute;
+    width: 15rem;
+    height: 10rem;
+    background: var(--kirby-color);
+    border-radius: 50%;
+    top: 35%;
+    border: 0.5rem solid black;    
+    z-index: -1;
+}
+
+.kirby__arm--left{
+    transform: rotate(-33deg);
+    left: -15%;
+}
+
+.kirby__arm--right{
+    transform: rotate(33deg);
+    right: -15%;
+}
+
+.kirby__mouth{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6rem;
+    height: 6rem;    
+    top: 42%;
+    border-radius: 50%;
+    border: 0.4rem solid transparent;
+    border-bottom: 0.4rem solid black;    
+}
+
+.kirby__foot{
+    position: absolute;
+    width: 17rem;
+    height: 11rem;
+    background: var(--kirby-foot-color);
+    border-radius: 48%;
+    border: 0.5rem solid black;    
+    z-index: -1;
+    top: 72%;        
+}
+
+.kirby__foot--left{
+    left: var(--kirby-foot-distance);
+    transform: rotate(-20deg);
+}
+
+.kirby__foot--right{
+    right: var(--kirby-foot-distance);
+    transform: rotate(20deg);
+}
+
+/* utility classes */
+.u-flex-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* animation classes */
+.a-who-is-this{
+    animation-name: who-is-this;
+    animation-duration: 1.2s;
+    animation-fill-mode: backwards;
+    animation-delay: 1s;
+}
+
+/* animations */
+@keyframes who-is-this{
+    from{
+        filter: blur(20rem);
+    }
+    to{
+        filter: blur(0);
+    }
+}
+
+/* media queries */
+@media (max-width: 31.25rem) {
+    .kirby__arm, .kirby__foot{
+        display: none;
+    }
+}
+
+@media (max-width: 21.875rem) {
+    .kirby{
+        transform: scale(0.7);
+    }
+}
+

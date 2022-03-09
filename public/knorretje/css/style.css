@@ -1,0 +1,151 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* variabele css */
+:root{
+--knorretje-color: #e74711;
+}
+
+/* rem is gekoppeld aan de standaard lettergrootte van de browser, bijna altijd 16px, dus 62.5% daarvan is 10px -> 1rem 10 px */
+html{
+    font-size: 62.5%;
+}
+
+body{
+    min-height: 100vh;
+    background: #004d91;    
+}
+
+
+.knorretje{
+position: relative;
+}
+
+/* als je hovert over figure knorretje, pas je iets aan in knorretje__mouth */
+.knorretje:hover .knorretje__mouth{
+    display: none;
+}
+
+/* als je hovert over figure knorretje, doe dan iets met knorretje smiley (laten zien) */
+.knorretje:hover .knorretje__smiley{
+    display: block;
+}
+
+.knorretje__head{
+width: 33rem;
+height: 31rem;
+background: var(--knorretje-color);
+border-top-left-radius: 50%;
+border-top-right-radius: 50%;
+border-bottom-left-radius: 46%;
+border-bottom-right-radius: 46%;
+border: 1rem solid black;
+}
+
+.knorretje__eye{
+height: 1.8rem;
+width: 1.3rem;
+background: black;
+border-radius: 50%;
+position: absolute;
+top: 30%;
+}
+
+.knorretje__eye--left{
+    left: 25%;
+}
+.knorretje__eye--right{
+    right: 25%;
+}
+
+.knorretje__nose{
+    width: 3.5rem;
+    height: 4rem;
+    background: var(--knorretje-color);
+    border-radius: 50%;
+    border: 0.8rem solid black;
+    position: absolute;
+    top: 42%;    
+}
+
+.knorretje__nose--left{
+    left: 39%;
+    transform: rotate(2deg);
+}
+
+.knorretje__nose--right{
+    right: 39%;
+    transform: rotate(-2deg)
+}
+
+.knorretje__mouth{
+    width: 2rem;
+    height: 2rem;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 63%;
+    transform: translateX(-50%);    
+}
+
+.knorretje__smiley{
+    position: absolute;
+    width: 10rem;
+    height: 13rem;
+    border-radius: 50%;
+    top: 28%;
+    left: 50%;    
+    transform: translateX(-50%);
+    border: 1rem solid transparent;
+    border-bottom: 1rem solid black;
+    display: none;
+}
+
+.knorretje__ear{
+    width: 6rem;
+    height: 9rem;
+    background: var(--knorretje-color);
+    border-radius: 50%;
+    border: 1rem solid black;
+    position: absolute;
+    top: 5%; 
+    z-index: -1;
+}
+
+.knorretje__ear--left{    
+    left: 10%;
+    transform: rotate(-30deg);
+}
+
+.knorretje__ear--right{
+ right: 10%;
+ transform: rotate(35deg);
+}
+
+/* Utility classes */
+.u-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* animation classes */
+.a-knorretjeee{
+    animation-name: knorretjeee;
+    animation-duration: 0.8s;
+    animation-fill-mode: backwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes knorretjeee {
+    from{
+        transform: scale(1.5);
+    }
+    to{
+        transform: scale(1);
+    }
+}

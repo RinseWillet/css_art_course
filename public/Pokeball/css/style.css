@@ -1,0 +1,209 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background-color: #EEE;
+    --pokéball-red-color: #EE1515;
+    --pokéball-gray-color: #F0F0F0;
+    --pokéball-border-color: #222224;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.pokéball{
+    position: relative;
+    overflow: hidden;
+}
+
+/* this creates the glance effect of the pokéball after the catch and beep animation */
+.pokéball::after{
+    content: "";
+    position: absolute;
+    height: 50rem;
+    width: 5rem;
+    background: var(--background-color);
+    top: 10%;
+    left: -100%;
+    transform: translateY(-50%) rotate(35deg);
+    opacity: 0.2;
+    
+    /* animation properties */
+    animation-name: caught;
+    animation-duration: 1.5s;
+    /* needs to have a 2 second delay + 2.5 seconds of other animations */
+    animation-delay: 4.5s;
+    animation-timing-function: ease-in;      
+}
+
+.pokéball__half{
+    width: 25rem;
+    height: 25rem;
+    /* methode 1 */
+    /* background: linear-gradient(var(--pokéball-red-color) 50%, var(--pokéball-gray-color) 50%); */
+    background: var(--pokéball-red-color);    
+    border: 0.2rem solid var(--pokéball-border-color);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+    border-radius: 50%;
+}
+
+.pokéball__half--red{
+    background: var(--pokéball-red-color); 
+}
+
+.pokéball__half--gray{
+    background: var(--pokéball-gray-color);
+    position: absolute;
+    transform: rotateX(180deg);
+    top: 0;
+    left: 0;
+}
+
+.pokéball__line{
+    position: absolute;
+    width: 25rem;
+    height: 2.5rem;
+    background: var(--pokéball-border-color);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.pokéball__innerCircle{
+    width: 8.25rem;
+    height: 8.25rem;
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    background: var(--pokéball-gray-color);
+    transform: translate(-50%, -50%);
+    border: 1rem solid var(--pokéball-border-color);
+}
+
+/* the innermost circle */
+.pokéball__innerCircle::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--pokéball-gray-color);
+    border: 0.2rem solid var(--pokéball-border-color);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: scale(0.6);
+
+    /* animations properties */
+    animation-name: beep;
+    animation-duration: 2.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-delay: 2s;
+}
+
+
+/* utility classes */
+.u-flex-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* animation classes */
+.a-catch{
+    animation-name: catch;
+    animation-duration: 2.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-delay: 2s;
+}
+
+/* animations */
+@keyframes catch {
+    0%{
+        transform: rotate(0deg);
+        transform-origin: bottom;
+    }
+    10%{
+        transform: rotate(15deg);
+        transform-origin: bottom;
+    }
+    15%{
+        transform: rotate(0deg);
+        transform-origin: bottom;
+    }
+    40%{
+        transform: rotate(0deg); 
+        transform-origin: bottom;
+    }
+    50%{
+        transform: rotate(-15deg);
+        transform-origin: bottom;
+    }
+    60%{
+        transform: rotate(0deg); 
+        transform-origin: bottom;
+    }
+    85%{
+        transform: rotate(0deg); 
+        transform-origin: bottom;
+    }
+    90%{
+        transform: rotate(15deg);
+        transform-origin: bottom;
+    }
+    100%{
+        transform: rotate(0deg); 
+        transform-origin: bottom;
+    }
+}
+
+@keyframes beep{
+    0%{
+        background: var(--pokéball-gray-color);
+    }
+    10%{
+        background: var(--pokéball-red-color);
+    }
+    15%{
+        background: var(--pokéball-gray-color);
+    }
+    40%{
+        background: var(--pokéball-gray-color);
+    }
+    50%{
+        background: var(--pokéball-red-color);
+    }
+    60%{
+        background: var(--pokéball-gray-color);
+    }
+    85%{
+        background: var(--pokéball-gray-color);
+    }
+    90%{
+        background: var(--pokéball-red-color);
+    }
+    100%{
+        background: var(--pokéball-gray-color);
+    }
+}
+
+@keyframes caught {
+    from {
+        top: 10%;
+        left: -100%;
+    }
+    to{
+        top: 10%;
+        left: 170%;
+    }
+}

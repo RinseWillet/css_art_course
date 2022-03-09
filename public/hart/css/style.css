@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+:root{
+    --heart-color: red;
+    --heart-size: 200px;
+}
+
+.secret{
+    width: var(--heart-size);
+    height: var(--heart-size);
+    background-color: var(--heart-color);
+    position: relative;
+    transform: rotate(45deg);
+    transition: 0.2s;
+}
+
+.secret:hover{
+    transform: scale(1.2) rotate(45deg);
+}
+
+.secret::before{
+    content: "";
+    position: absolute;
+    width: var(--heart-size);
+    height: var(--heart-size);
+    background-color: var(--heart-color);
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+.secret::after{
+    content: "";
+    position: absolute;
+    width: var(--heart-size);
+    height: var(--heart-size);
+    background: var(--heart-color);
+    top: 0;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}

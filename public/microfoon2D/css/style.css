@@ -1,0 +1,100 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background-color: #eee;
+    --button-background-light-color: #00ADB5;
+    --button-background-dark-color: #008D93;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+
+.microphone{
+    position: relative;    
+}
+
+.microphone__button{
+    height: 30rem;
+    width: 30rem;
+    background: linear-gradient(90deg, var(--button-background-light-color) 50%, var(--button-background-dark-color) 50%);
+    border-radius: 50%;
+    box-shadow: 0 0.8rem 1.5rem rgba(0,0,0,0.4);
+}
+
+.microphone__mic{
+    position:absolute;
+    top: 15%;
+    left: 50%;
+    background: var(--background-color);
+    width: 20%;
+    height: 40%;
+    border-radius: 5rem;
+    transform: translateX(-50%)
+}
+
+.microphone__holder{
+    position: absolute;
+    width: 45%;
+    height: 45%;
+    top: 18%;
+    left: 50%;
+    border-radius: 50%;
+    border: 0.8rem solid transparent;
+    border-bottom: 0.8rem solid var(--background-color);
+    border-left: 0.8rem solid var(--background-color);
+    transform: translateX(-50%) rotate(-45deg);    
+}
+
+.microphone__stand{
+    position: absolute;
+    width: 0.8rem;
+    height: 6rem;
+    background: var(--background-color);
+    top: 62%;
+    /* dit is hetzelfde als 50% en dan transform translateX-50% */
+    left: calc(50% - (0.8rem)/2);  
+}
+
+.microphone__foot{
+position:absolute;
+width: 10rem;
+height: 0.8rem;
+background: var(--background-color);
+top: 82%;
+left: calc(50% - (10rem)/2);
+}
+
+/* utility classes */
+.u-flex-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* animation classes */
+.a-popup {
+    animation-name: popup;
+    animation-duration: 0.8s;
+    animation-fill-mode: backwards;
+}
+
+/* animations */
+@keyframes popup {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

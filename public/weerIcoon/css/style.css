@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #3d84b8;
+  --sun-color: #ffd460;
+  --cloud-color: #fff;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background-color);
+}
+
+.weather {
+  position: relative;
+}
+
+.weather__sun {
+  height: 12rem;
+  width: 12rem;
+  background: var(--sun-color);
+  border-radius: 50%;
+  filter: drop-shadow(0rem 0 1rem var(--sun-color));
+  transition: 0.2s filter;
+}
+
+.weather__sun:hover {
+  filter: none;
+}
+
+.weather__cloud {
+  position: absolute;
+  top: 85%;
+  left: 15%;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 0.6rem rgba(255, 255, 255, 0.6));
+  transition: 0.2s filter;
+}
+
+.weather__cloud:hover {
+  filter: none;
+}
+/* onderkant wolk */
+.weather__partOfCloud {
+  width: 20rem;
+  height: 6rem;
+  background: var(--cloud-color);
+  border-radius: 3rem;
+}
+
+/* dit zijn attributen voor zowel de Before als de After */
+.weather__partOfCloud::before, .weather__partOfCloud::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* rechterkant wolk */
+.weather__partOfCloud::before {
+  width: 10rem;
+  height: 9rem;  
+  top: -55%;
+  left: 43%;
+  background: var(--cloud-color);
+}
+
+/* linkerkant wolk */
+.weather__partOfCloud::after {
+  width: 11rem;
+  height: 11rem; 
+  top: -90%;
+  left: 13%;  
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 1) 50%
+  );
+}
+
+/* utility classes */
+.u-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* animation classes */
+
+.a-cloud, .a-sunrise{
+  animation-duration: 0.8s;
+  animation-fill-mode: backwards;
+}
+
+.a-cloud {
+  animation-name: cloud;  
+}
+
+.a-sunrise {
+  animation-name: sunrise;  
+}
+
+/* animations */
+@keyframes cloud {
+  from {
+    transform: translateX(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes sunrise {
+  from {
+    opacity: 0;
+    filter: drop-shadow(0 0 0 var(--sun-color));
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    filter: drop-shadow(0 0 1rem var(--sun-color));
+    transform: translateY(0);
+  }
+}
+
+/* media queries - responsive maken*/
+/* !!in een media query is 1 rem de default browser font-size (16px) */
+@media (max-width: 31.25rem) {
+  .weather__cloud {
+    left: -30%;
+  }
+  .weather__cloud:hover {
+    filter: drop-shadow(0 0 0.6rem rgba(255, 255, 255, 0.6));
+  }
+
+  .weather__sun:hover {
+    filter: drop-shadow(0rem 0 1rem var(--sun-color));
+  }
+}

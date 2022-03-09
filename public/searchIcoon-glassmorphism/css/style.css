@@ -1,0 +1,107 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color: #6A2C70;
+    --glass-color: #CFFFFE;
+    --design-color: black;
+    --shine-color: #BBB1FA;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(45deg, rgba(0,255,255,0.6), transparent), url(/searchIcoon-glassmorphism/img/backgroundNeon.webp) no-repeat center fixed;
+    background-size: cover;
+}
+
+.search{
+position: relative;
+transform: rotate(-45deg);
+height: 30rem;
+width: 15rem;
+}
+
+.search__glass{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background: var(--glass-color);
+    border: 1rem solid var(--design-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.search__glass::before{
+    content:"";
+    height: 50rem;
+    width: 2rem;
+    background: var(--shine-color);
+    opacity: 0.5;
+    position:absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-50%) rotate(90deg);
+    animation-name: shine;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.search__glass--glassmorphism{
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(0.6rem);
+}
+
+
+.search__handle{
+    width: 1.5rem;
+    height: 7.5rem;
+    background-color: var(--design-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+/* utility classes */
+.u-flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.u-scale-container{
+transition: 0.2s all;
+}
+
+.u-scale-container:hover{
+    transform: scale(1.2)
+}
+
+/* animations */
+@keyframes shine{
+   /*op nul seconden */
+    0% {
+       left: 0;
+       top: 0;
+   }
+
+   /* op 2 seconden */
+   20% { 
+       left: 100%;
+       top: 120%;
+   }
+
+   /*op 4 seconden staat ie daar nog steeds -> pauze gemaakt */
+   100% {
+       left: 100%;
+       top: 120%;
+   }
+}
